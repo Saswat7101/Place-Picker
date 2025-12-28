@@ -1,10 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+const THREE_SECONDS = 3000;
 
 export default function DeleteConfirmation({ onConfirm, onCancel }) {
+  const [progress, setProgress] = useState(THREE_SECONDS);
+
+  useEffect(() => {
+    setInterval(() => {
+      setProgress((prevProgress) => (prevProgress > 0 ? prevProgress - 10 : 0));
+    }, 10);
+  }, []);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       onConfirm();
-    }, 3000); // to test modal behavior
+    }, THREE_SECONDS); // to test modal behavior
 
     return () => {
       clearTimeout(timer);
@@ -23,6 +33,7 @@ export default function DeleteConfirmation({ onConfirm, onCancel }) {
           Yes
         </button>
       </div>
+      <progress value={progress} max={THREE_SECONDS} />
     </div>
   );
 }

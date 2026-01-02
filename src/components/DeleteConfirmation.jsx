@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
-import ProgressBar from "./ProgressBar.jsx";
+import { useEffect } from 'react';
 
-const THREE_SECONDS = 3000;
+import ProgressBar from './ProgressBar.jsx';
+
+const TIMER = 3000;
 
 export default function DeleteConfirmation({ onConfirm, onCancel }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       onConfirm();
-    }, THREE_SECONDS); // to test modal behavior
+    }, TIMER);
 
     return () => {
       clearTimeout(timer);
@@ -26,7 +27,7 @@ export default function DeleteConfirmation({ onConfirm, onCancel }) {
           Yes
         </button>
       </div>
-      <ProgressBar timer={THREE_SECONDS} />
+      <ProgressBar timer={TIMER} />
     </div>
   );
 }

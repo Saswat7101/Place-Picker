@@ -7,7 +7,7 @@ A React application that allows users to create a personal collection of places 
 - **Location-based Sorting**: Automatically sorts places by distance using the user's geolocation.
 - **Place Selection**: Add places to your personal collection.
 - **Place Removal**: Remove places with a confirmation modal.
-- **Persistent Storage**: Selected places are saved in localStorage for persistence across sessions.
+- **Persistent Storage**: Selected places are saved via a backend API for persistence across sessions.
 - **Responsive Design**: Built with React for a smooth user experience.
 
 ## Technologies Used
@@ -16,6 +16,8 @@ A React application that allows users to create a personal collection of places 
 - **Vite**: Build tool for fast development and bundling.
 - **JavaScript (ES6+)**: Core language for the application logic.
 - **CSS**: Styling for the components.
+- **Node.js**: Runtime environment for the backend server.
+- **Express**: Web framework for building the backend API.
 
 ## Installation
 
@@ -26,19 +28,34 @@ A React application that allows users to create a personal collection of places 
    cd placepicker
    ```
 
-2. Install dependencies:
+2. Install frontend dependencies:
 
    ```
    npm install
    ```
 
-3. Start the development server:
+3. Install backend dependencies:
+
+   ```
+   cd backend
+   npm install
+   cd ..
+   ```
+
+4. Start the backend server:
+
+   ```
+   cd backend
+   node app.js
+   ```
+
+5. In a new terminal, start the frontend development server:
 
    ```
    npm run dev
    ```
 
-4. Open your browser and navigate to `http://localhost:5173` (or the port shown in the terminal).
+6. Open your browser and navigate to `http://localhost:5173` (or the port shown in the terminal).
 
 ## Usage
 
@@ -50,6 +67,14 @@ A React application that allows users to create a personal collection of places 
 
 ```
 placepicker/
+├── backend/
+│   ├── app.js           # Backend server entry point
+│   ├── data/
+│   │   ├── places.json  # Available places data
+│   │   └── user-places.json  # User-selected places data
+│   ├── images/          # Place images
+│   ├── package.json
+│   └── package-lock.json
 ├── public/
 │   └── logo.png
 ├── src/
